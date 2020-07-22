@@ -1,53 +1,53 @@
-# fcos.res50.fpn.coco.800size.1x.fix_bug  
+# fcos.res50.fpn.coco.800size.1x
 
 ## Evaluation results for bbox:  
 
 ```  
- Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.388
- Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.576
- Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.420
- Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.224
- Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.426
- Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.503
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.322
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.387
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.575
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.417
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.226
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.427
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.499
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.320
  Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.534
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.571
- Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.363
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.616
- Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.735
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.570
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.364
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.617
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.720
 ```  
-|   AP   |  AP50  |  AP75  |  APs   |  APm   |  APl   |  
-|:------:|:------:|:------:|:------:|:------:|:------:|  
-| 38.805 | 57.601 | 42.041 | 22.400 | 42.578 | 50.262 |
+|   AP   |  AP50  |  AP75  |  APs   |  APm   |  APl   |
+|:------:|:------:|:------:|:------:|:------:|:------:|
+| 38.719 | 57.490 | 53.539 | 46.949 | 41.692 | 35.188 |
 
 ### Per-category bbox AP:  
 
-| category      | AP     | category     | AP     | category       | AP     |  
-|:--------------|:-------|:-------------|:-------|:---------------|:-------|  
-| person        | 53.260 | bicycle      | 29.385 | car            | 41.813 |  
-| motorcycle    | 39.798 | airplane     | 64.624 | bus            | 62.616 |  
-| train         | 59.045 | truck        | 32.574 | boat           | 23.324 |  
-| traffic light | 25.466 | fire hydrant | 64.778 | stop sign      | 62.586 |  
-| parking meter | 42.110 | bench        | 20.482 | bird           | 33.208 |  
-| cat           | 64.192 | dog          | 60.999 | horse          | 51.798 |  
-| sheep         | 50.941 | cow          | 55.895 | elephant       | 62.747 |  
-| bear          | 70.969 | zebra        | 67.077 | giraffe        | 64.299 |  
-| backpack      | 13.320 | umbrella     | 37.708 | handbag        | 13.033 |  
-| tie           | 28.672 | suitcase     | 34.798 | frisbee        | 65.062 |  
-| skis          | 17.534 | snowboard    | 27.383 | sports ball    | 45.471 |  
-| kite          | 41.312 | baseball bat | 23.984 | baseball glove | 33.830 |  
-| skateboard    | 50.089 | surfboard    | 32.528 | tennis racket  | 44.606 |  
-| bottle        | 35.022 | wine glass   | 34.308 | cup            | 41.791 |  
-| fork          | 26.318 | knife        | 14.142 | spoon          | 12.493 |  
-| bowl          | 38.979 | banana       | 22.695 | apple          | 19.476 |  
-| sandwich      | 33.567 | orange       | 33.654 | broccoli       | 22.437 |  
-| carrot        | 19.591 | hot dog      | 29.484 | pizza          | 49.417 |  
-| donut         | 45.853 | cake         | 34.259 | chair          | 25.902 |  
-| couch         | 39.947 | potted plant | 26.663 | bed            | 40.067 |  
-| dining table  | 24.568 | toilet       | 57.637 | tv             | 51.173 |  
-| laptop        | 55.931 | mouse        | 58.387 | remote         | 27.944 |  
-| keyboard      | 46.272 | cell phone   | 34.371 | microwave      | 56.653 |  
-| oven          | 29.280 | toaster      | 29.388 | sink           | 33.247 |  
-| refrigerator  | 51.578 | book         | 12.728 | clock          | 49.556 |  
-| vase          | 36.491 | scissors     | 22.074 | teddy bear     | 44.277 |  
-| hair drier    | 9.562  | toothbrush   | 13.890 |                |        |
+| category      | AP     | category     | AP     | category       | AP     |
+|:--------------|:-------|:-------------|:-------|:---------------|:-------|
+| person        | 53.282 | bicycle      | 29.202 | car            | 42.108 |
+| motorcycle    | 38.985 | airplane     | 63.561 | bus            | 63.563 |
+| train         | 57.491 | truck        | 31.925 | boat           | 21.811 |
+| traffic light | 25.712 | fire hydrant | 64.749 | stop sign      | 64.309 |
+| parking meter | 42.604 | bench        | 20.516 | bird           | 34.071 |
+| cat           | 64.635 | dog          | 61.370 | horse          | 52.967 |
+| sheep         | 51.680 | cow          | 56.638 | elephant       | 62.866 |
+| bear          | 71.860 | zebra        | 66.408 | giraffe        | 65.609 |
+| backpack      | 14.180 | umbrella     | 37.956 | handbag        | 13.694 |
+| tie           | 27.788 | suitcase     | 34.438 | frisbee        | 64.418 |
+| skis          | 18.604 | snowboard    | 29.170 | sports ball    | 45.519 |
+| kite          | 40.818 | baseball bat | 25.096 | baseball glove | 34.597 |
+| skateboard    | 47.097 | surfboard    | 30.247 | tennis racket  | 45.019 |
+| bottle        | 35.221 | wine glass   | 34.911 | cup            | 41.024 |
+| fork          | 27.317 | knife        | 14.199 | spoon          | 13.405 |
+| bowl          | 39.203 | banana       | 23.568 | apple          | 18.976 |
+| sandwich      | 31.181 | orange       | 31.731 | broccoli       | 22.755 |
+| carrot        | 19.831 | hot dog      | 27.377 | pizza          | 49.126 |
+| donut         | 43.932 | cake         | 35.290 | chair          | 26.128 |
+| couch         | 41.758 | potted plant | 26.208 | bed            | 39.194 |
+| dining table  | 25.756 | toilet       | 57.755 | tv             | 51.880 |
+| laptop        | 55.564 | mouse        | 59.272 | remote         | 26.730 |
+| keyboard      | 44.607 | cell phone   | 33.582 | microwave      | 58.325 |
+| oven          | 29.844 | toaster      | 26.954 | sink           | 33.510 |
+| refrigerator  | 51.442 | book         | 12.788 | clock          | 48.099 |
+| vase          | 34.989 | scissors     | 19.893 | teddy bear     | 43.942 |
+| hair drier    | 7.573  | toothbrush   | 16.101 |                |        |

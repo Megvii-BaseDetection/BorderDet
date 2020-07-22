@@ -1,10 +1,10 @@
 # BorderDet
 
-This project provides an implementation for "BorderDet: Border Feature for Dense Object Detection" (ECCV2020 Oral) on PyTorch.
+This project provides an implementation for "BorderDet: Border Feature for Dense Object Detection" (*ECCV2020 Oral*) on PyTorch.
 
 For the reason that experiments in the paper were conducted using internal framework, this project reimplements them on cvpods and reports detailed comparisons below.
 
-![introduce image](./playground/detection/coco/borderdet/intro/borderdet.pdf)
+<center><img src="./playground/detection/coco/borderdet/intro/borderdet.png" width="700" align="middle"/></center>
 
 ## Requirements
 * Python >= 3.6
@@ -44,13 +44,18 @@ pods_train --num-gpus 8 --num-machines N --machine-rank 0/1/.../N-1 --dist-url "
 ```
 
 ## Results on COCO
-For your convenience, we provide the performance of the following trained models. All models are trained with 16 images in a mini-batch and frozen batch normalization.
+For your convenience, we provide the performance of the following trained models. All models are trained with 16 images in a mini-batch and frozen batch normalization. All model including R_101/X_101/DCN_X_101 will be released soon.
 
-| Model | Multi-scale training | Multi-scale training | Testing time / im | AP (minival) |
-|:---:  |:--------------------:|:--------------------:|:-----------------:|:---:|
-| [FCOS_R_50_FPN_1x](https://github.com/Megvii-BaseDetection/BorderDet/blob/master/playground/detection/coco/fcos/fcos.res50.fpn.coco.800size.1x) | No | No | 54ms | 38.7 |
-| [BD_R_50_FPN_1x](https://github.com/Megvii-BaseDetection/BorderDet/blob/master/playground/detection/coco/borderdet/borderdet.res50.fpn.coco.800size.1x) | No | No | 60ms | 41.4 |
+| Model | Multi-scale training | Multi-scale training | Testing time / im | AP (minival) | Link |
+|:---:  |:--------------------:|:--------------------:|:-----------------:|:-------:|:---:|
+| [FCOS_R_50_FPN_1x](https://github.com/Megvii-BaseDetection/BorderDet/blob/master/playground/detection/coco/fcos/fcos.res50.fpn.coco.800size.1x) | No | No | 54ms | 38.7 | [Google](https://drive.google.com/file/d/1hcDobxvqolMwqj20BEAPikSMcz4NYZRx/view?usp=sharing)
+| [BD_R_50_FPN_1x](https://github.com/Megvii-BaseDetection/BorderDet/blob/master/playground/detection/coco/borderdet/borderdet.res50.fpn.coco.800size.1x) | No | No | 60ms | 41.4 | [Google](https://drive.google.com/file/d/1nhGA0TYtwGp_RMwPoZDAPbZ_TNL8-XCj/view?usp=sharing)
+
 
 
 ## Acknowledgement
 cvpods is developed based on Detectron2. For more details about official detectron2, please check [DETECTRON2](https://github.com/facebookresearch/detectron2/blob/master/README.md).
+
+
+## Contributing to the project
+Any pull requests or issues are welcome.

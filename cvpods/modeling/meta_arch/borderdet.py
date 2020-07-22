@@ -518,12 +518,12 @@ class BorderDet(nn.Module):
             box_ctr_i = box_ctr_i.sigmoid_()
             bd_box_cls_i = bd_box_cls_i.sigmoid_()
 
-            predicted_prob = (box_cls_i * bd_box_cls_i).sqrt()
+            predicted_prob = (box_cls_i * box_ctr_i).sqrt()
 
             # filter out the proposals with low confidence score
             keep_idxs = predicted_prob > self.score_threshold
 
-            predicted_prob = predicted_prob * box_ctr_i
+            predicted_prob = predicted_prob * bd_box_cls_i
 
             predicted_prob = predicted_prob[keep_idxs]
             # Keep top k top scoring indices only.
@@ -776,19 +776,25 @@ class BorderBranch(nn.Module):
         :param in_channels:
         """
         super(BorderBranch, self).__init__()
-        self.border_channels = border_channels
-
-        self.bam_conv0 = nn.Sequential(
+        self.cur_point_conv = nn.Sequential(
             nn.Conv2d(
                 in_channels,
-                border_channels * 5,
+                border_channels,
                 kernel_size=1),
-            nn.InstanceNorm2d(border_channels * 5),
+            nn.InstanceNorm2d(border_channels),
+            nn.ReLU())
+
+        self.ltrb_conv = nn.Sequential(
+            nn.Conv2d(
+                in_channels,
+                border_channels * 4,
+                kernel_size=1),
+            nn.InstanceNorm2d(border_channels * 4),
             nn.ReLU())
 
         self.border_align = BorderAlign(pool_size=10)
 
-        self.bam_conv1 = nn.Sequential(
+        self.border_conv = nn.Sequential(
             nn.Conv2d(
                 5 * border_channels,
                 in_channels,
@@ -798,11 +804,10 @@ class BorderBranch(nn.Module):
     def forward(self, feature, boxes, wh):
         N, C, H, W = feature.shape
 
-        feature = self.bam_conv0(feature)
-        ltrb_feature = feature[:, self.border_channels:]
-        center_feature = feature[:, :self.border_channels]
-        ltrb_feature = self.border_align(ltrb_feature, boxes)
-        ltrb_feature = ltrb_feature.permute(0, 3, 1, 2).reshape(N, -1, H, W)
-        feature = torch.cat([ltrb_feature, center_feature], dim=1)
-        feature = self.bam_conv1(feature)
-        return feature
+        fm_short = self.cur_point_conv(feature)
+        feature = self.ltrb_conv(feature)
+        ltrb_conv = self.border_align(feature, boxes)
+        ltrb_conv = ltrb_conv.permute(0, 3, 1, 2).reshape(N, -1, H, W)
+        align_conv = torch.cat([ltrb_conv, fm_short], dim=1)
+        align_conv = self.border_conv(align_conv)
+        return align_conv
