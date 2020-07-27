@@ -44,12 +44,13 @@ pods_train --num-gpus 8 --num-machines N --machine-rank 0/1/.../N-1 --dist-url "
 ```
 
 ## Results on COCO
-For your convenience, we provide the performance of the following trained models. All models are trained with 16 images in a mini-batch and frozen batch normalization. All model including R_101/X_101/DCN_X_101 will be released soon.
+For your convenience, we provide the performance of the following trained models. All models are trained with 16 images in a mini-batch and frozen batch normalization. All model including X_101/DCN_X_101 will be released soon.
 
-| Model | Multi-scale training | Multi-scale training | Testing time / im | AP (minival) | Link |
+| Model | Multi-scale training | Multi-scale testing | Testing time / im | AP (minival) | Link |
 |:---:  |:--------------------:|:--------------------:|:-----------------:|:-------:|:---:|
 | [FCOS_R_50_FPN_1x](https://github.com/Megvii-BaseDetection/BorderDet/blob/master/playground/detection/coco/fcos/fcos.res50.fpn.coco.800size.1x) | No | No | 54ms | 38.7 | [Google](https://drive.google.com/file/d/1hcDobxvqolMwqj20BEAPikSMcz4NYZRx/view?usp=sharing)
 | [BD_R_50_FPN_1x](https://github.com/Megvii-BaseDetection/BorderDet/blob/master/playground/detection/coco/borderdet/borderdet.res50.fpn.coco.800size.1x) | No | No | 60ms | 41.4 | [Google](https://drive.google.com/file/d/1nhGA0TYtwGp_RMwPoZDAPbZ_TNL8-XCj/view?usp=sharing)
+| [BD_R_101_FPN_1x](https://github.com/Megvii-BaseDetection/BorderDet/blob/master/playground/detection/coco/borderdet/borderdet.res101.fpn.coco.800size.2x) | Yes | No | 76ms | 45.0 | [Google](https://drive.google.com/file/d/1LEbLZwP_9eKbpZXC52D5B_V85A4pr9eE/view?usp=sharing)
 
 
 
