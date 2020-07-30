@@ -185,14 +185,14 @@ class BottleneckBlock(ResNetBlockBase):
             kernel_size=1,
             stride=stride_1x1,
             bias=False,
-            norm=get_norm(norm, group_width),
+            norm=get_norm(norm, bottleneck_channels),
         )
 
         if self.radix > 1:
             from .splat import SplAtConv2d
             self.conv2 = SplAtConv2d(
-                group_width,
-                group_width,
+                bottleneck_channels,
+                bottleneck_channels,
                 kernel_size=3,
                 stride=1 if self.avd else stride_3x3,
                 padding=dilation, dilation=dilation,
@@ -203,22 +203,22 @@ class BottleneckBlock(ResNetBlockBase):
             )
         else:
             self.conv2 = Conv2d(
-                group_width,
-                group_width,
+                bottleneck_channels,
+                bottleneck_channels,
                 kernel_size=3,
                 stride=stride_3x3,
                 padding=1 * dilation,
                 bias=False,
                 groups=num_groups,
                 dilation=dilation,
-                norm=get_norm(norm, group_width),
+                norm=get_norm(norm, bottleneck_channels),
             )
 
         if self.avd:
             self.avd_layer = nn.AvgPool2d(3, stride, padding=1)
 
         self.conv3 = Conv2d(
-            group_width,
+            bottleneck_channels,
             out_channels,
             kernel_size=1,
             bias=False,
@@ -288,6 +288,10 @@ class DeformBottleneckBlock(ResNetBlockBase):
         inplace=False,
         stride_in_1x1=False,
         dilation=1,
+        avd=False,
+        avg_down=False,
+        radix=1,
+        bottleneck_width=1,
         deform_modulated=False,
         deform_num_groups=1,
     ):
