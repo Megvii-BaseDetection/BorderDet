@@ -1,6 +1,7 @@
 **/log
 
 *.jpg
+*.png
 *.txt
 
 # compilation and distribution
@@ -38,3 +39,7 @@ tools/pods_train
 # project dirs
 /datasets
 /models
+
+
+# exclude
+!requirements*.txt
