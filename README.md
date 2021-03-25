@@ -38,19 +38,25 @@ ln -s /path/to/your/coco/dataset coco
 ```shell
 git clone https://github.com/Megvii-BaseDetection/BorderDet.git
 cd BorderDet/playground/detection/coco/borderdet/borderdet.res50.fpn.coco.800size.1x  # for example
+```
 
 # Train
+```shell
 pods_train --num-gpus 8
+```
 
 # Test
+```shell
 pods_test --num-gpus 8 \
     MODEL.WEIGHTS /path/to/your/save_dir/ckpt.pth # optional
     OUTPUT_DIR /path/to/your/save_dir # optional
+```
 
 # Multi node training
 ## sudo apt install net-tools ifconfig
+```shell
 pods_train --num-gpus 8 --num-machines N --machine-rank 0/1/.../N-1 --dist-url "tcp://MASTER_IP:port"
-
+```
 
 
 ## Results on COCO
